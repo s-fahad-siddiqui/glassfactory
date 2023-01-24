@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <report
+            id="report_dues_assesment_sheet"
+            model="sale.order"
+            report_type="qweb-pdf"
+            string="Order Without Services"
+            name="sale_order_details_hide.order_withoutdetails"
+            file="sale_order_details_hide.order_withoutdetails"
+            
+        />
+
+        <report
+        id="report_dues_invoice_details"
+        model="account.move"
+        report_type="qweb-pdf"
+        string="invoice Without Services/Details"
+        name="sale_order_details_hide.report_invoice_with_payments_inherite"
+        file="sale_order_details_hide.report_invoice_with_payments_inherite"
+        
+    />
+</odoo>
