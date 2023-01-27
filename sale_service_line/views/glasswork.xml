@@ -61,7 +61,7 @@
       <record id="view_field_allsize_prod_custom" model="ir.ui.view">
         <field name="name">product.product.allsize.prod.inherit</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.template.common.form"/>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">   
            <xpath expr="//field[@name='product_variant_id']" position="before">
                 <field name="height_prod" />
