@@ -19,8 +19,8 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">   
             <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="before" >
-                <field name="product_parent_ref_id" />
-                  <field name="child_ref_ids" />
+                <field name="product_parent_ref_id" invisible='1'/>
+                  <field name="child_ref_ids" invisible='1'/>
                 
 
             </xpath>              
@@ -36,7 +36,7 @@
             <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="after" >
                 <button name="trigger_prod" type="object" string="Update services" class="btn-primary" attrs="{'invisible':[('product_type','=','service')]}" />
 
-                   <field name="product_type" />
+                   <field name="product_type" invisible="1"/>
 
             </xpath>              
         </field>
