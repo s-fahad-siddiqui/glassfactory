@@ -93,31 +93,30 @@ class GlassWork(models.Model):
         # sale_ord=self.env['sale.order'].search([('order_line', '=', self.id)])
         # sale_ord._onchange_categ()
         for line in self:
-            if line.product_id.detailed_type=='product':
+            if line.product_id.detailed_type!='service':
                     for service_prod in line.service_product_ids:
                         found=False
                         for child_id in line.child_ref_ids:
                             if service_prod.id==child_id.product_id.id:
                                 found=True
                                 break
-                        if found:
-                            continue
-                        line_item = {
+                        if not found:
+                            line_item = {
 
-                                    'product_id':service_prod.id,
-                                    'name': service_prod.name,
-                                    'product_uom_qty': 1,
-                                    'product_uom' : service_prod.uom_id.id,
-                                    'order_id': self.id,
-                                    'product_parent_ref_id':line.id,
-                                    'order_id':line.order_id.id,
-                                    
-                                                                
-                                }
-            
-                        createdline=self.env['sale.order.line'].create(line_item)
-                        createdline.width_prod_line=line.width_prod_line
-                        createdline.height_prod_line=line.height_prod_line
+                                        'product_id':service_prod.id,
+                                        'name': service_prod.name,
+                                        'product_uom_qty': 1,
+                                        'product_uom' : service_prod.uom_id.id,
+                                        'order_id': self.id,
+                                        'product_parent_ref_id':line.id,
+                                        'order_id':line.order_id.id,
+                                        
+                                                                    
+                                    }
+                
+                            createdline=self.env['sale.order.line'].create(line_item)
+                            createdline.width_prod_line=line.width_prod_line
+                            createdline.height_prod_line=line.height_prod_line
                             
                     for child_id in line.child_ref_ids:
                         found=False
@@ -137,7 +136,6 @@ class GlassWork(models.Model):
 class GlassWorkOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.onchange('order_line')
     def prod_sequence(self):
         for order in self:
             sequence=1
