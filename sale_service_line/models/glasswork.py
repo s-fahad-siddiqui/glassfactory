@@ -87,6 +87,7 @@ class GlassWork(models.Model):
                     _height = (record.height_prod_line + record.height_prod_line)
                     _long = _width + _height
                     record['sqm_prod_line'] = _long /1000
+                    record['product_uom_qty'] = record.sqm_prod_line
 
     def trigger_prod(self):
     
