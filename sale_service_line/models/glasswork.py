@@ -76,12 +76,12 @@ class GlassWork(models.Model):
     def calculate_sqm(self):
         self.sqm_prod_line=0.0
         for record in self:
-            if record.product_id.uom_id.id != 7:
+            if record.product_id.uom_id.id != 38:
                 if record.width_prod_line or record.height_prod_line:
                     record['sqm_prod_line'] = (record.width_prod_line * record.height_prod_line)/1000000
                     record['product_uom_qty'] = record.sqm_prod_line
       
-            elif record.product_id.uom_id.id == 7:
+            elif record.product_id.uom_id.id == 38:
                 if record.width_prod_line or record.height_prod_line:
                     _width = (record.width_prod_line + record.width_prod_line)
                     _height = (record.height_prod_line + record.height_prod_line)
