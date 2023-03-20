@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+    <record model="ir.ui.view" id="new_sale_inherit">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="project_state" readonly='1'/>
+
+            </xpath>
+
+
+        </field>
+    </record> 
+    
+    <record model="ir.ui.view" id="new_sale_listinherit">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                <field name="project_state" readonly='1'/>
+
+            </xpath>
+
+
+        </field>
+    </record>
+
+        
+ 
+    </data>
+</odoo>
