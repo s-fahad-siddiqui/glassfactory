@@ -52,7 +52,7 @@ class GlassWork(models.Model):
     width_prod_line=fields.Float(string='Width')
     height_prod_line=fields.Float(string='Height')
     sqm_prod_line=fields.Float(string='SQM',compute='calculate_sqm')
-    custom_qty_prod_line=fields.Float(string='Qty')
+    custom_qty_prod_line=fields.Float(string='Qty',default=1.0)
 
   
 
