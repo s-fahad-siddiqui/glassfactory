@@ -52,6 +52,7 @@
                 <field name="height_prod_line" />
                 <field name="width_prod_line" />
                 <field name="sqm_prod_line" />
+                <field name="custom_qty_prod_line" />
 
             </xpath>              
         </field>

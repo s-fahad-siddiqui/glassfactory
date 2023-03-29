@@ -52,6 +52,7 @@ class GlassWork(models.Model):
     width_prod_line=fields.Float(string='Width')
     height_prod_line=fields.Float(string='Height')
     sqm_prod_line=fields.Float(string='SQM',compute='calculate_sqm')
+    custom_qty_prod_line=fields.Float(string='Qty')
 
   
 
@@ -79,7 +80,7 @@ class GlassWork(models.Model):
             if record.product_id.uom_id.id != 38:
                 if record.width_prod_line or record.height_prod_line:
                     record['sqm_prod_line'] = (record.width_prod_line * record.height_prod_line)/1000000
-                    record['product_uom_qty'] = record.sqm_prod_line
+                    record['product_uom_qty'] = record.sqm_prod_line*record.custom_qty_prod_line
       
             elif record.product_id.uom_id.id == 38:
                 if record.width_prod_line or record.height_prod_line:
@@ -87,7 +88,7 @@ class GlassWork(models.Model):
                     _height = (record.height_prod_line + record.height_prod_line)
                     _long = _width + _height
                     record['sqm_prod_line'] = _long /1000
-                    record['product_uom_qty'] = record.sqm_prod_line
+                    record['product_uom_qty'] = record.sqm_prod_line*record.custom_qty_prod_line
 
     def trigger_prod(self):
     
