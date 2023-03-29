@@ -73,7 +73,7 @@ class GlassWork(models.Model):
 
 
 
-    @api.onchange('width_prod_line','height_prod_line','product_uom')
+    @api.onchange('width_prod_line','height_prod_line','product_uom','custom_qty_prod_line')
     def calculate_sqm(self):
         self.sqm_prod_line=0.0
         for record in self:
